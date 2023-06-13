@@ -1,0 +1,23 @@
+#carousel-wrapper{
+    border-radius: 20% 220px 20%;
+    transition: .3s ease-in-out;
+}
+#carousel-wrapper:hover{
+    border-radius: 220px 20% 220px;
+}
+#arrow-btn{
+    animation-name: arrowBtn;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes arrowBtn {
+    0%{
+        opacity: .3;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .3;
+    }
+}

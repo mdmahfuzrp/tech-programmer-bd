@@ -1,0 +1,21 @@
+.list-items div{
+    background-color: #FFDB77;
+    padding: 10px;
+    border-radius: 5px;
+}
+a{
+    display: flex;
+    align-items: center;
+    color: black;
+}
+a svg{
+    font-size: 18px;
+    margin-right: 8px;
+    color: black;
+}
+#logout-btn{
+    border: 1px solid rgba(255, 255, 255, 0.644);
+    color: rgba(255, 255, 255, 0.786);
+    padding: 2px 5px;
+    border-radius: 5px;
+}
