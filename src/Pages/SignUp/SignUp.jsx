@@ -1,17 +1,51 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const [userInfo, setUserInfo] = useState(null);
+    // TODO: USER INFO SEND IN DATABASE
+    const { handleSignup, auth } = useContext(AuthContext);
+    // const [userInfo, setUserInfo] = useState(null);
     const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data, event) => {
-    setUserInfo(data);
-    const form = event.target;
-    form.reset();
-  };
-  console.log(userInfo);
+    const onSubmit = (data, event) => {
+        // setUserInfo(data);
+        const form = event.target;
+        handleSignup(data.userEmail, data.userPassword)
+            .then(() => {
+                Swal.fire({
+                    title: 'Congratulations!',
+                    text: 'Your account created successful',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                form.reset();
+                updateUserInfo(data.userName, data.userPhoto);
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    title: 'Please try again!',
+                    text: 'Something went wrong',
+                    icon: 'error',
+                    confirmButtonText: 'Try again'
+                })
+            })
+    };
+
+    const updateUserInfo = (name, photo) => {
+        updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        }).then(() => {
+            console.log('updated profile');
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+    // console.log(userInfo);
 
 
     return (
@@ -48,7 +82,7 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input {...register("userPassword", { required: true })}  type="password" placeholder="Password" className="input input-bordered" />
+                                    <input {...register("userPassword", { required: true })} type="password" placeholder="Password" className="input input-bordered" />
                                     {errors.userPassword && <span className="text-red-600">Password field is required</span>}
                                 </div>
                             </div>

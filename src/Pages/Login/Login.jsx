@@ -1,26 +1,43 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const {displayName} = useContext(AuthContext);
-    const [userInfo, setUserInfo] = useState(null);
+    const { handleLogin } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data, event) => {
-        setUserInfo(data);
         const form = event.target;
-        form.reset();
+
+        handleLogin(data.userEmail, data.userPassword)
+            .then(() => {
+                Swal.fire({
+                    title: 'Welcome!',
+                    text: 'Your login successful',
+                    icon: 'success',
+                    confirmButtonText: 'Done'
+                })
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    title: 'Please try again!',
+                    text: 'Something went wrong',
+                    icon: 'error',
+                    confirmButtonText: 'Try again'
+                })
+            })
     };
-    console.log(userInfo);
 
     return (
         <div className="w-11/12 mx-auto">
             <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!{displayName}</h1>
+                        <h1 className="text-5xl font-bold">Login now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-md bg-base-100">

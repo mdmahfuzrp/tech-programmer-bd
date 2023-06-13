@@ -22,6 +22,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.12.1",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.7.12",
     "swiper": "^9.4.0"
   },
   "devDependencies": {
