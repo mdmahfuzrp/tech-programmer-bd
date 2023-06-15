@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFolderPlus, FaHome, FaUsers, FaUserTie, FaCheckDouble, FaCheckSquare, FaArrowCircleRight, FaChalkboardTeacher } from 'react-icons/fa';
+import { FaRegCalendarPlus, FaFolderPlus, FaHome, FaUsers, FaUserTie, FaCheckDouble, FaCheckSquare, FaArrowCircleRight, FaChalkboardTeacher, FaRegClone } from 'react-icons/fa';
 import './SideBar.css'
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
@@ -41,7 +41,7 @@ const SideBar = ({ activeUser }) => {
     if (role === 'admin') {
         dashboardOption = <>
             <div>
-                <Link to='/dashboard/allusers'><FaFolderPlus />Manage Classes</Link>
+                <Link to='/dashboard/manageClasses'><FaFolderPlus />Manage Classes</Link>
             </div>
             <div>
                 <Link to='/dashboard/allusers'><FaUsers />Manage Users</Link>
@@ -51,13 +51,20 @@ const SideBar = ({ activeUser }) => {
     else if (role === 'student') {
         dashboardOption = <>
             <div>
-                <Link to='/dashboard/mydashboard' role={role}><FaHome />Dashboard</Link>
-            </div>
-            <div>
                 <Link to='/dashboard/myselectedclass'><FaCheckSquare />My selected classes</Link>
             </div>
             <div>
                 <Link to='/dashboard/myenrolledclass'><FaCheckDouble />My Enrolled Classes</Link>
+            </div>
+        </>
+    }
+    else if (role === 'instructor') {
+        dashboardOption = <>
+            <div>
+                <Link to='/dashboard/addClass'><FaRegCalendarPlus />Add Class</Link>
+            </div>
+            <div>
+                <Link to='/dashboard/myClasses'><FaRegClone />My Classes</Link>
             </div>
         </>
     }
@@ -82,10 +89,10 @@ const SideBar = ({ activeUser }) => {
                     <Link to='/'><FaHome />Home</Link>
                 </div>
                 <div>
-                    <Link><FaUserTie />Instructors</Link>
+                    <Link to='/instructor'><FaUserTie />Instructors</Link>
                 </div>
                 <div>
-                    <Link><FaChalkboardTeacher />Classes</Link>
+                    <Link to='/classes'><FaChalkboardTeacher />Classes</Link>
                 </div>
             </div>
 

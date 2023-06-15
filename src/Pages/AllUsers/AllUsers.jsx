@@ -37,13 +37,44 @@ const AllUsers = () => {
                     refetch();
                     Swal.fire({
                         title: 'Successful',
-                        text: `${user.userName} is now a Admin`,
+                        text: `${user.userName} is now a Instructor`,
                         icon: 'success',
                         confirmButtonText: 'Done'
                     })
                 }
             })
     }
+
+    const handleDeleteUser = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to delete ${user.userName}!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/${user._id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                `User has been deleted successfully`,
+                                'Done'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
     return (
         <div className="p-5">
             {
@@ -92,7 +123,7 @@ const AllUsers = () => {
                                         </td>
                                         <td><div className="badge border-[#9833f9] text-[#9833f9] badge-outline">{user?.role}</div></td>
                                         <th>
-                                            <button className="border-0 shadow-md p-2 rounded-lg text-white bg-[#f94141b4]">
+                                            <button onClick={() => handleDeleteUser(user)} className="border-0 shadow-md p-2 rounded-lg text-white bg-[#f94141b4]">
                                                 <FaRegTrashAlt size={19} />
                                             </button>
                                         </th>
