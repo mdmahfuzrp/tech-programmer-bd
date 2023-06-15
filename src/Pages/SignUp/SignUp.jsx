@@ -15,7 +15,10 @@ const SignUp = () => {
         // setUserInfo(data);
         const form = event.target;
         handleSignup(data.userEmail, data.userPassword)
-            .then(() => {
+            .then((result) => {
+                const newUser = result.user;
+                updateUserInfo(data?.userName, data?.userPhoto, newUser.email, data.userPassword);
+
                 Swal.fire({
                     title: 'Congratulations!',
                     text: 'Your account created successful',
@@ -23,7 +26,6 @@ const SignUp = () => {
                     confirmButtonText: 'Ok'
                 })
                 form.reset();
-                updateUserInfo(data.userName, data.userPhoto);
             })
             .catch(error => {
                 console.log(error);
@@ -36,11 +38,26 @@ const SignUp = () => {
             })
     };
 
-    const updateUserInfo = (name, photo) => {
+    const updateUserInfo = (name, photo, email) => {
         updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         }).then(() => {
-            console.log('updated profile');
+            const newUserInfo = {
+                userName: name ? name : email,
+                userPhoto: photo,
+                userEmail: email,
+                role: 'student'
+            }
+            console.log('updated profile', newUserInfo);
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(newUserInfo)
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
         }).catch((error) => {
             console.log(error);
         });
@@ -75,8 +92,7 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text">Photo URL</span>
                                     </label>
-                                    <input {...register("userPhoto", { required: true })} type="text" placeholder="Photo" className="input input-bordered" />
-                                    {errors.userPhoto && <span className="text-red-600">Photo URL is required</span>}
+                                    <input {...register("userPhoto")} type="text" placeholder="Photo (optional)" className="input input-bordered" />
                                 </div>
                                 <div className="form-control w-full">
                                     <label className="label">

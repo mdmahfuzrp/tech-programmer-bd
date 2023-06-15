@@ -1,12 +1,19 @@
 #carousel-wrapper{
     border-radius: 20% 220px 20%;
-    transition: .3s ease-in-out;
-}
-#carousel-wrapper:hover{
-    border-radius: 220px 20% 220px;
+    position: relative;
+    left: 0;
+    animation-name: carousel;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 #arrow-btn{
     animation-name: arrowBtn;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.carousel-item img{
+    transform: scale(1);
+    animation-name: carouselImg;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
@@ -19,5 +26,28 @@
     }
     100%{
         opacity: .3;
+    }
+}
+@keyframes  carouselImg{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes  carousel{
+    0%{
+        border-radius: 20% 220px 20%;
+    }
+    50%{
+        border-radius: 220px 20% 220px;
+    }
+    100%{
+        border-radius: 20% 220px 20%;
     }
 }

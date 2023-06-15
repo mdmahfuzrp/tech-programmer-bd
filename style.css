@@ -11,8 +11,9 @@ common-color-secondary: #9833f9; */
   --common-primary-color: #FFDB77;
   --common-secondary-color: #9833f9;
   --custom-font-weight: 400;
-  --custom-box-shadow: 0 2px 25px -14px #1D2024;
-  --custom-big-box-shadow: -10px 10px 50px #7373c54a;
+  --custom-box-shadow: 0 2px 25px -14px #1d20248a;
+  --custom-big-box-shadow: -2px 0 30px #7373c54a;
+  --navbar-items-color: black;
 }
 
 .dark-theme {
@@ -22,10 +23,13 @@ common-color-secondary: #9833f9; */
   --common-primary-color: #FFDB77;
   --common-secondary-color: #9833f9;
   --custom-font-weight: 300;
-  --custom-box-shadow: 0 2px 25px -14px #F0F5F7;
-  --custom-big-box-shadow: -10px 10px 50px #7373c54a;
+  --custom-box-shadow: 0 2px 25px -14px #f0f5f7a9;
+  --custom-big-box-shadow: -2px 0 30px #7373c54a;
+  --navbar-items-color: #9833f9;
 }
-
+#items-1:hover, #items-2:hover, #items-3:hover, #items-4:hover{
+  color: var(--navbar-items-color);
+}
 body {
   background-color: var(--bg-color);
   letter-spacing: .2px;
@@ -34,7 +38,6 @@ p {
   color: var(--text-primary-color);
   font-weight: var(--custom-font-weight);
 }
-
 span {
   color: var(--text-secondary-color);
   font-weight: var(--custom-font-weight);
