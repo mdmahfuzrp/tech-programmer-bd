@@ -1,12 +1,49 @@
 import { FaRegTrashAlt, FaUserShield, FaUserTie } from "react-icons/fa";
 import { ProgressBar } from "react-loader-spinner";
 import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users');
         return res.json();
     })
+
+    const handleMakeAdmin = (user) => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        title: 'Successful',
+                        text: `${user.userName} is now a Admin`,
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+            })
+    }
+
+    const handleMakeInstructor = (user) => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        title: 'Successful',
+                        text: `${user.userName} is now a Admin`,
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+            })
+    }
     return (
         <div className="p-5">
             {
@@ -44,11 +81,11 @@ const AllUsers = () => {
                                             </div>
                                         </td>
                                         <td className="">
-                                            <button className="border-0 btn btn-success btn-sm m-1 shadow-md bg-[#9833f9] text-white">
+                                            <button onClick={() => handleMakeAdmin(user)} className="border-0 btn btn-success btn-sm m-1 shadow-md bg-[#9833f9] text-white" disabled={user.role === 'admin' ? true : false}>
                                                 <FaUserShield size={20} className="text-white" />
                                                 Make Admin
                                             </button>
-                                            <button className="border-0 btn btn-sm btn-success m-1 bg-[#9833f9] text-white shadow-md">
+                                            <button onClick={() => handleMakeInstructor(user)} className="border-0 btn btn-sm btn-success m-1 bg-[#9833f9] text-white shadow-md" disabled={user.role === 'instructor' ? true : false}>
                                                 <FaUserTie size={20} className="" />
                                                 Make Instructor
                                             </button>
