@@ -44,7 +44,7 @@ const SideBar = ({ activeUser }) => {
                 <Link to='/dashboard/allusers'><FaFolderPlus />Manage Classes</Link>
             </div>
             <div>
-                <Link to='/dashboard/myenrolledclass'><FaUsers />Manage Users</Link>
+                <Link to='/dashboard/allusers'><FaUsers />Manage Users</Link>
             </div>
         </>
     }

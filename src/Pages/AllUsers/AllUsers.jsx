@@ -1,3 +1,4 @@
+import { FaRegTrashAlt, FaUserShield, FaUserTie } from "react-icons/fa";
 import { ProgressBar } from "react-loader-spinner";
 import { useQuery } from "react-query";
 
@@ -7,155 +8,67 @@ const AllUsers = () => {
         return res.json();
     })
     return (
-        <div>
+        <div className="p-5">
             {
                 users.length > 0 ? <>
 
-                    <div className="overflow-x-auto">
-                        <table className="table">
+                    <div className="overflow-x-auto bg-[#FFDB77] p-5 rounded-lg">
+                        <table className="table border border-[white]">
                             {/* head */}
                             <thead>
                                 <tr>
                                     <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
                                     </th>
-                                    <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
+                                    <th>Information</th>
+                                    <th>Action</th>
+                                    <th>Role</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* row 1 */}
-                                <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                {
+                                    users.map(user => <tr key={user._id}>
+                                        <th>
+                                        </th>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={user?.userPhoto} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className="font-bold">{user?.userName}</div>
+                                                    <div className="text-sm opacity-75">{user?.userEmail}</div>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                                {/* row 2 */}
-                                <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Brice Swyre</div>
-                                                <div className="text-sm opacity-50">China</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Carroll Group
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-                                    </td>
-                                    <td>Red</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                                {/* row 3 */}
-                                <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Marjy Ferencz</div>
-                                                <div className="text-sm opacity-50">Russia</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Rowe-Schoen
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-                                    </td>
-                                    <td>Crimson</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                                {/* row 4 */}
-                                <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Yancy Tear</div>
-                                                <div className="text-sm opacity-50">Brazil</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Wyman-Ledner
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-                                    </td>
-                                    <td>Indigo</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
+                                        </td>
+                                        <td className="">
+                                            <button className="border-0 btn btn-success btn-sm m-1 shadow-md bg-[#9833f9] text-white">
+                                                <FaUserShield size={20} className="text-white" />
+                                                Make Admin
+                                            </button>
+                                            <button className="border-0 btn btn-sm btn-success m-1 bg-[#9833f9] text-white shadow-md">
+                                                <FaUserTie size={20} className="" />
+                                                Make Instructor
+                                            </button>
+                                        </td>
+                                        <td><div className="badge border-[#9833f9] text-[#9833f9] badge-outline">{user?.role}</div></td>
+                                        <th>
+                                            <button className="border-0 shadow-md p-2 rounded-lg text-white bg-[#f94141b4]">
+                                                <FaRegTrashAlt size={19} />
+                                            </button>
+                                        </th>
+                                    </tr>)
+                                }
                             </tbody>
                             {/* foot */}
                             <tfoot>
                                 <tr>
                                     <th></th>
-                                    <th>Name</th>
-                                    <th>Job</th>
+                                    <th>Information</th>
                                     <th>Action</th>
+                                    <th>Role</th>
                                     <th></th>
                                 </tr>
                             </tfoot>
