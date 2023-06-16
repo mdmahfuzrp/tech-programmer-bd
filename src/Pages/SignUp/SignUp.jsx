@@ -10,9 +10,9 @@ const SignUp = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
-    
-    const { handleSignup, auth } = useContext(AuthContext);
-    
+
+    const { handleSignup, auth, handleGoogleSignIn } = useContext(AuthContext);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data, event) => {
         // setUserInfo(data);
@@ -68,6 +68,21 @@ const SignUp = () => {
     }
     // console.log(userInfo);
 
+    const handleGoogleLogin = () => {
+        handleGoogleSignIn()
+            .then(() => {
+                Swal.fire({
+                    title: 'Welcome!',
+                    text: 'Your login successful',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <div className="w-11/12 mx-auto">
@@ -112,15 +127,16 @@ const SignUp = () => {
                             <p className="text-[15px] flex gap-2 items-center">Already have an account ? <Link to='/login' className="underline text-blue-600">Login</Link></p>
 
                             <div className="divider">OR</div>
-                            <div className="flex justify-center gap-2">
-                                <button className="btn custom-btn p-0 btn-circle">
-                                    <FaGoogle size={25} />
-                                </button>
-                                <button className="btn custom-btn p-0 btn-circle">
-                                    <FaGithub size={25} />
-                                </button>
-                            </div>
+
                         </form>
+                        <div className="flex justify-center gap-2 mb-5">
+                            <button onClick={handleGoogleLogin} className="btn custom-btn p-0 btn-circle">
+                                <FaGoogle size={25} />
+                            </button>
+                            <button className="btn custom-btn p-0 btn-circle">
+                                <FaGithub size={25} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

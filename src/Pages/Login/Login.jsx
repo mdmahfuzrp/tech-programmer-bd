@@ -6,7 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { handleLogin } = useContext(AuthContext);
+    const { handleLogin, handleGoogleSignIn } = useContext(AuthContext);
     
     const location = useLocation();
     const navigate = useNavigate();
@@ -37,6 +37,22 @@ const Login = () => {
                 })
             })
     };
+
+    const handleGoogleLogin = () => {
+        handleGoogleSignIn()
+            .then(() => {
+                Swal.fire({
+                    title: 'Welcome!',
+                    text: 'Your login successful',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <div className="w-11/12 mx-auto">
@@ -70,15 +86,16 @@ const Login = () => {
                             </div>
                             <p className="text-[15px] flex gap-2 items-center">Not have any account ? <Link to='/signup' className="underline text-blue-600">Signup</Link></p>
                             <div className="divider">OR</div>
-                            <div className="flex justify-center gap-2">
-                                <button className="btn custom-btn p-0 btn-circle">
+                            
+                        </form>
+                            <div className="flex justify-center gap-2 mb-5">
+                                <button onClick={handleGoogleLogin} className="btn custom-btn p-0 btn-circle">
                                     <FaGoogle size={25} />
                                 </button>
                                 <button className="btn custom-btn p-0 btn-circle">
                                     <FaGithub size={25} />
                                 </button>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
