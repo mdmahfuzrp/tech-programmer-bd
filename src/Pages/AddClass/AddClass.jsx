@@ -3,6 +3,7 @@ import { FaPhotoVideo } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
     const img_hosting_token = import.meta.env.VITE_Upload_Img_Token;
@@ -26,19 +27,29 @@ const AddClass = () => {
                 if (imgResponse.success) {
                     const img = imgResponse.data.display_url;
                     data.classPhoto = img;
+                    fetch('http://localhost:5000/classes', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    title: 'Class added successful',
+                                    text: 'Please wait for admin approval and feedback!',
+                                    icon: 'success',
+                                    confirmButtonText: 'Done'
+                                })
+                            }
+                        })
                     form.reset();
                 }
             })
 
-        fetch('http://localhost:5000/classes', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+
     };
     return (
         <div>
