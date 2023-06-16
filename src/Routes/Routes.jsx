@@ -13,7 +13,6 @@ import AddClass from "../Pages/AddClass/AddClass";
 import ManageClasses from "../Pages/ManageClasses/ManageClasses";
 import Feedback from "../Pages/Feedback/Feedback";
 import Instructor from "../Pages/Instructor/Instructor";
-import AllClasses from "../Pages/AllClasses/AllClasses";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Payment from "../Pages/Payment/Payment";
 import MyClasses from "../Pages/MyClasses/MyClasses";

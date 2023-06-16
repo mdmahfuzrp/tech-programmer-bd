@@ -23,7 +23,7 @@ const Dashboard = () => {
 
     console.log(activeUser);
     return (
-        <div>
+        <div className="bg-gray-200">
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">

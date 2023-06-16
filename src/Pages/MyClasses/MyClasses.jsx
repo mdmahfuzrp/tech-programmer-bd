@@ -66,7 +66,7 @@ const MyClasses = () => {
                                                 </td>
                                                 <td><div className="badge text-[white] font-[300] py-3 capitalize badge-neutral">{c?.status}</div></td>
                                                 <th>
-                                                <div className="badge text-[white] font-[300] py-3 capitalize badge-neutral">8</div>
+                                                <div className="badge text-[white] font-[300] py-3 capitalize badge-neutral">{Math.floor(Math.random() * 4) + 1}</div>
                                                 </th>
                                             </tr>)
                                         }

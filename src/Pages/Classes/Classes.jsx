@@ -30,7 +30,7 @@ const Classes = () => {
     }, [student])
 
 
-    const { data: classes = [], refetch, isLoading } = useQuery(['classes'], async () => {
+    const { data: classes = [] } = useQuery(['classes'], async () => {
         const res = await fetch(`http://localhost:5000/classes`);
         return res.json();
     })
@@ -117,7 +117,7 @@ const Classes = () => {
                                         </div>
                                     </div>
                                     {
-                                        user ? <button onClick={() => handleSelectClass(cls)} disabled={student ? true : false} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
+                                        user ? <button onClick={() => handleSelectClass(cls)} disabled={student ? true : false || cls.seats === 0 ? true : false} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
                                             : <>
                                                 <button onClick={handleWarning} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
                                             </>

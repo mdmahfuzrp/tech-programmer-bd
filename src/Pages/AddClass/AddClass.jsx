@@ -53,7 +53,7 @@ const AddClass = () => {
 
     };
     return (
-        <div>
+        <div className="bg-gray-200">
             <div className='sm:w-11/12 md:w-9/12 my-7 mx-auto'>
                 <form onSubmit={handleSubmit(onSubmitClass)}>
                     <div className="space-y-12">
