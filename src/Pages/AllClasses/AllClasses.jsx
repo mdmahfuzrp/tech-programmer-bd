@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 const AllClasses = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [allClasses, setAllClasses] = useState([]);
 
 
@@ -13,6 +13,18 @@ const AllClasses = () => {
                 setAllClasses(data);
             })
     }, [allClasses])
+
+    const handleSelectClass = (selectedClass) => {
+        fetch('http://localhost:5000/selectedClass', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(selectedClass)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
 
     return (
         <div className="md:w-11/12 mx-auto">
@@ -35,7 +47,7 @@ const AllClasses = () => {
                                                 <div className="badge badge-outline">Available Seats: {cls.seats}</div>
                                             </div>
                                         </div>
-                                        <button disabled={user?.email === 'mahfuzrpsmorg@gmail.com' || user?.email === 'admin@gmail.com' ? true : false} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
+                                        <button onClick={() => handleSelectClass(cls)} disabled={user?.email === 'mahfuzrpsmorg@gmail.com' || user?.email === 'admin@gmail.com' ? true : false} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
                                     </div>
                                 </div>)
                             }

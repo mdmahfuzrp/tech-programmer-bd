@@ -89,7 +89,7 @@ const SideBar = ({ activeUser }) => {
                     <Link to='/'><FaHome />Home</Link>
                 </div>
                 <div>
-                    <Link to='/instructor'><FaUserTie />Instructors</Link>
+                    <Link to='/instructors'><FaUserTie />Instructors</Link>
                 </div>
                 <div>
                     <Link to='/classes'><FaChalkboardTeacher />Classes</Link>

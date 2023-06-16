@@ -1,5 +1,5 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
@@ -7,9 +7,12 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-    // TODO: USER INFO SEND IN DATABASE
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+    
     const { handleSignup, auth } = useContext(AuthContext);
-    // const [userInfo, setUserInfo] = useState(null);
+    
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data, event) => {
         // setUserInfo(data);
@@ -25,6 +28,7 @@ const SignUp = () => {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 })
+                navigate(from, { replace: true });
                 form.reset();
             })
             .catch(error => {
