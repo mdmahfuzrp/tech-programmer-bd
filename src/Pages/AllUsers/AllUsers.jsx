@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
-    const { data: users = [], refetch } = useQuery(['users'], async () => {
+    const { data: users = [], refetch, isLoading } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users');
         return res.json();
     })
@@ -78,7 +78,7 @@ const AllUsers = () => {
     return (
         <div className="p-5">
             {
-                users.length > 0 ? <>
+                !isLoading ? <>
 
                     <div className="overflow-x-auto bg-[#FFDB77] p-5 rounded-lg">
                         <table className="table border border-[white]">

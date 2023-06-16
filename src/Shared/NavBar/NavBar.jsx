@@ -12,9 +12,9 @@ const NavBar = () => {
     const [theme, setTheme] = useState('light-theme');
 
     const listItems = <>
-        <li><Link id='items-1' className='text-[var(--text-primary-color)]'>Home</Link></li>
-        <li><Link id='items-2' className='text-[var(--text-primary-color)]'>Instructors</Link></li>
-        <li><Link id='items-3' className='text-[var(--text-primary-color)]'>Classes</Link></li>
+        <li><Link to='/' id='items-1' className='text-[var(--text-primary-color)]'>Home</Link></li>
+        <li><Link to='/instructors' id='items-2' className='text-[var(--text-primary-color)]'>Instructors</Link></li>
+        <li><Link to='/classes' id='items-3' className='text-[var(--text-primary-color)]'>Classes</Link></li>
         <li><Link id='items-4' className='text-[var(--text-primary-color)]' to="/dashboard">Dashboard</Link></li>
     </>
 

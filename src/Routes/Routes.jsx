@@ -10,6 +10,10 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import AddClass from "../Pages/AddClass/AddClass";
+import ManageClasses from "../Pages/ManageClasses/ManageClasses";
+import Feedback from "../Pages/Feedback/Feedback";
+import Instructor from "../Pages/Instructor/Instructor";
+import AllClasses from "../Pages/AllClasses/AllClasses";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -26,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: 'signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: 'instructors',
+                element: <Instructor></Instructor>
+            },
+            {
+                path: 'classes',
+                element: <AllClasses></AllClasses>
             }
         ]
     },
@@ -52,6 +64,14 @@ const router = createBrowserRouter([
             {
                 path: 'addClass',
                 element: <AddClass></AddClass>
+            },
+            {
+                path: 'manageClasses',
+                element: <ManageClasses></ManageClasses>
+            },
+            {
+                path: 'feedback/:id',
+                element: <Feedback></Feedback>
             }
         ]
     },

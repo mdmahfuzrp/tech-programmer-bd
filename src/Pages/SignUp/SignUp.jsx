@@ -44,7 +44,7 @@ const SignUp = () => {
         }).then(() => {
             const newUserInfo = {
                 userName: name ? name : email,
-                userPhoto: photo,
+                photoURL: photo,
                 userEmail: email,
                 role: 'student'
             }
