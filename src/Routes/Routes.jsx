@@ -9,6 +9,7 @@ import MyEnrolledClass from "../Pages/MyEnrolledClass/MyEnrolledClass";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllUsers from "../Pages/AllUsers/AllUsers";
+import AddClass from "../Pages/AddClass/AddClass";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: 'allusers',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'addClass',
+                element: <AddClass></AddClass>
             }
         ]
     },
