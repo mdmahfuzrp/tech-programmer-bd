@@ -15,6 +15,9 @@ import Feedback from "../Pages/Feedback/Feedback";
 import Instructor from "../Pages/Instructor/Instructor";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Payment from "../Pages/Payment/Payment";
+import MyClasses from "../Pages/MyClasses/MyClasses";
+import Classes from "../Pages/Classes/Classes";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -38,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'classes',
-                element: <AllClasses></AllClasses>
+                element: <Classes></Classes>
             }
         ]
     },
@@ -71,8 +74,16 @@ const router = createBrowserRouter([
                 element: <ManageClasses></ManageClasses>
             },
             {
+                path: 'myClasses',
+                element: <MyClasses></MyClasses>
+            },
+            {
                 path: 'feedback/:id',
                 element: <Feedback></Feedback>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             }
         ]
     },

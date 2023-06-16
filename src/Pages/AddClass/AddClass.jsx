@@ -17,6 +17,7 @@ const AddClass = () => {
 
         const formData = new FormData();
         formData.append('image', data.classPhoto[0])
+        formData.append('status', 'pending')
 
         fetch(img_hosting_url, {
             method: 'POST',
@@ -63,7 +64,7 @@ const AddClass = () => {
                             </p>
 
                             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                                <div className="col-span-full">
+                                <div className="col-span-3">
                                     <label htmlFor='className' className="block text-md font-medium leading-6 text-gray-900">
                                         Class name
                                     </label>
@@ -81,6 +82,20 @@ const AddClass = () => {
 
                                         </div>
                                         {errors.className && <span className="text-red-400 text-[15px]">Class name is required</span>}
+                                    </div>
+                                </div>
+
+                                <div className="col-span-3">
+                                    <label htmlFor='className' className="block text-md font-medium leading-6 text-gray-900">
+                                        Status
+                                    </label>
+                                    <div className="mt-2">
+                                        <input
+                                            {...register("status", { required: true })}
+                                            className="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 outline-none"
+                                            value={'pending'}
+                                            disabled
+                                        />
                                     </div>
                                 </div>
 
