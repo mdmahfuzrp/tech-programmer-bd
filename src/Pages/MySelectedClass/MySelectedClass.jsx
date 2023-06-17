@@ -3,8 +3,12 @@ import { ProgressBar } from "react-loader-spinner";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useDashboardTitle from "../../hooks/useDashboardTitle";
 
 const MySelectedClass = () => {
+    // Website Title
+    useDashboardTitle('Selected Classes')
+
     const { data: selectedClass = [], refetch, isLoading } = useQuery(['selectedClass'], async () => {
         const res = await fetch('https://tech-programmer-bd-server.vercel.app/selectedClass');
         return res.json();

@@ -1,8 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const CheckOutForm = ({ price, selectedClass }) => {
+    
+    // Set Website Title
+    useTitle('Check Out')
+
     const {user} = useContext(AuthContext);
     const [cardError, setCardError] = useState('');
     const [transactioonId, setTransactionId] = useState('')

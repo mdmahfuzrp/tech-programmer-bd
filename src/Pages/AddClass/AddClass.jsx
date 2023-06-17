@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useDashboardTitle from "../../hooks/useDashboardTitle";
 
 const AddClass = () => {
+    // Website Title
+    useDashboardTitle('Add Class')
+
+
     const img_hosting_token = import.meta.env.VITE_Upload_Img_Token;
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();

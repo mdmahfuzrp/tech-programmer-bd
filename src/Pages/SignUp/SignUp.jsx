@@ -5,8 +5,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
+    
+    // Set Website Title
+    useTitle('Signup')
+
     const [passError, setPassError] = useState('');
     const [togglePass, setTogglePass] = useState(false);
     const location = useLocation();

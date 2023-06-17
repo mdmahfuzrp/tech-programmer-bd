@@ -1,7 +1,11 @@
 import { ProgressBar } from "react-loader-spinner";
 import { useQuery } from "react-query";
+import useDashboardTitle from "../../hooks/useDashboardTitle";
 
 const MyEnrolledClass = () => {
+    // Website Title
+    useDashboardTitle('Enrolled Classes')
+
     const { data: enrolledClass = [], isLoading } = useQuery(['payments'], async () => {
         const res = await fetch('https://tech-programmer-bd-server.vercel.app/payments');
         return res.json();

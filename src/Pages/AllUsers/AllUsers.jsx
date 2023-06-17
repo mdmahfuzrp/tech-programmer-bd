@@ -2,8 +2,14 @@ import { FaRegTrashAlt, FaUserShield, FaUserTie } from "react-icons/fa";
 import { ProgressBar } from "react-loader-spinner";
 import { useQuery } from "react-query";
 import Swal from "sweetalert2";
+import useDashboardTitle from "../../hooks/useDashboardTitle";
 
 const AllUsers = () => {
+    
+    // Website Title
+    useDashboardTitle('All Users')
+
+
     const { data: users = [], refetch, isLoading } = useQuery(['users'], async () => {
         const res = await fetch('https://tech-programmer-bd-server.vercel.app/users');
         return res.json();

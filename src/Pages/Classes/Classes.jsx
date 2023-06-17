@@ -3,8 +3,14 @@ import { useQuery } from "react-query";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const Classes = () => {
+    
+    // Set Website Title
+    useTitle('Classes')
+
+
     const { user } = useContext(AuthContext);
 
     const [mySelected, setMySelected] = useState([]);

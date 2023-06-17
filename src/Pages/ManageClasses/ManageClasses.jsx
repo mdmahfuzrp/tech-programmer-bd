@@ -4,8 +4,13 @@ import PendingClasses from "./PendingClasses";
 import Swal from "sweetalert2";
 import ApproveClasses from "./ApproveClasses";
 import DenyClasses from "./DenyClasses";
+import useDashboardTitle from "../../hooks/useDashboardTitle";
 
 const ManageClasses = () => {
+    
+    // Website Title
+    useDashboardTitle('Manage Classes')
+
     const [pendingClasses, setPendingClasses] = useState([]);
     const [approvedClasses, setApprovedClasses] = useState([]);
     const [denyClasses, setDenyClasses] = useState([]);

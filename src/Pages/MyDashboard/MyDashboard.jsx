@@ -1,7 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const MyDashboard = () => {
+    // Website Title
+    useTitle('Dashboard')
+
     const {user} = useContext(AuthContext);
     return (
         <div className="bg-[var(--bg-color)] flex flex-col min-h-screen items-center justify-center">

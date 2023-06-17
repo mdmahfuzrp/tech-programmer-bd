@@ -4,8 +4,14 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+    
+    // Set Website Title
+    useTitle('Login')
+
+
     const [togglePass ,setTogglePass] = useState(false)
     const { handleLogin, handleGoogleSignIn } = useContext(AuthContext);
 

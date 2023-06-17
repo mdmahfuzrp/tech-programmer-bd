@@ -2,11 +2,15 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { useQuery } from "react-query";
 import { ProgressBar } from "react-loader-spinner";
+import useDashboardTitle from "../../hooks/useDashboardTitle";
 
 const MyClasses = () => {
+    // Website Title
+    useDashboardTitle('Instructors Classes');
+
     const { user } = useContext(AuthContext);
 
-    const { data: myClasses = [], refetch, isLoading } = useQuery(['classes'], async () => {
+    const { data: myClasses = [], isLoading } = useQuery(['classes'], async () => {
         const res = await fetch(`https://tech-programmer-bd-server.vercel.app/classes/${user?.email}`);
         return res.json();
     })

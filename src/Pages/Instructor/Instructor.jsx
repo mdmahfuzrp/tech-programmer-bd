@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import useTitle from "../../hooks/useTitle";
 
 const Instructor = () => {
+
+    // Set Website Title
+    useTitle('Instructors')
+
     const [allInstructors, setAllInstructors] = useState([]);
     useEffect(() => {
         fetch('https://tech-programmer-bd-server.vercel.app/instructors')
