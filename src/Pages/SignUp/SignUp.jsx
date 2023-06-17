@@ -7,15 +7,33 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
+    const [passError, setPassError] = useState('');
     const [togglePass, setTogglePass] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
-
     const { handleSignup, auth, handleGoogleSignIn } = useContext(AuthContext);
-
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+    // Password Validation Regular Exp:
+    const capitalLetterRegex = /[A-Z]/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
     const onSubmit = (data, event) => {
+        const password = data.userPassword;
+        console.log('password: ', password);
+        if(password.length < 6){
+            setPassError('Please provide at least 6 digit password!');
+            return;
+        }
+        if(!capitalLetterRegex.test(password)){
+            setPassError('Please provide at least 1 capital letter!');
+            return;
+        }
+        if(!specialCharRegex.test(password)){
+            setPassError('Please provide at least 1 special character!');
+            return;
+        }
         // setUserInfo(data);
         const form = event.target;
         handleSignup(data.userEmail, data.userPassword)
@@ -119,7 +137,10 @@ const SignUp = () => {
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input {...register("userPassword", { required: true })} type={togglePass ? 'text': 'password'} placeholder="Password" className="input input-bordered" />
-                                    {errors.userPassword && <span className="text-red-600">Password field is required</span>}
+                                    {errors.userPassword && <span className="text-red-600 text-[15px] mt-1">Password field is required</span>}
+                                    {
+                                        passError && <span className="text-red-600 text-[15px] mt-1">{passError}</span>
+                                    }
                                     {
                                         togglePass ? <p onClick={()=> setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-[#9833f9]"><FaRegEye size={18} /></p>
                                         : <p onClick={()=> setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-gray-500"><FaEyeSlash FaRegEye size={18} /></p>
