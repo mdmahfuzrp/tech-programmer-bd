@@ -1,12 +1,13 @@
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEyeSlash, FaGithub, FaGoogle, FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
+    const [togglePass, setTogglePass] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -86,7 +87,7 @@ const SignUp = () => {
 
     return (
         <div className="w-11/12 mx-auto">
-            <div className="hero bg-base-200">
+            <div className="hero bg-[var(--bg-color)]">
                 <div className="w-full lg:w-2/3">
                     <div className="card flex-shrink-0 shadow-md bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
@@ -113,18 +114,22 @@ const SignUp = () => {
                                     </label>
                                     <input {...register("userPhoto")} type="text" placeholder="Photo (optional)" className="input input-bordered" />
                                 </div>
-                                <div className="form-control w-full">
+                                <div className="form-control w-full relative">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input {...register("userPassword", { required: true })} type="password" placeholder="Password" className="input input-bordered" />
+                                    <input {...register("userPassword", { required: true })} type={togglePass ? 'text': 'password'} placeholder="Password" className="input input-bordered" />
                                     {errors.userPassword && <span className="text-red-600">Password field is required</span>}
+                                    {
+                                        togglePass ? <p onClick={()=> setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-[#9833f9]"><FaRegEye size={18} /></p>
+                                        : <p onClick={()=> setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-gray-500"><FaEyeSlash FaRegEye size={18} /></p>
+                                    }
                                 </div>
                             </div>
                             <div className="form-control mt-6">
                                 <button type="submit" className="custom-btn">Signup</button>
                             </div>
-                            <p className="text-[15px] flex gap-2 items-center">Already have an account ? <Link to='/login' className="underline text-blue-600">Login</Link></p>
+                            <p className="text-[15px] flex gap-2 items-center text-black">Already have an account ? <Link to='/login' className="underline text-blue-600">Login</Link></p>
 
                             <div className="divider">OR</div>
 

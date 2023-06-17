@@ -88,7 +88,7 @@ const NavBar = () => {
                         !loading ? <>
                             {
                                 user ? <div className='flex items-center gap-2'>
-                                    <Link to='/profile'>
+                                    <Link to='/dashboard'>
                                         <img className='w-[48px] h-[48px] rounded-full object-cover border-2 border-[var(--common-secondary-color)]' src={user.photoURL ? user.photoURL : "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"} alt="User" />
                                     </Link>
                                     <Link className='bg-[var(--common-secondary-color)] flex items-center justify-center ps-2 rounded-md py-[10px]' onClick={handleUserLogout}><BsBoxArrowRight className='text-white' size={22} /></Link>

@@ -1,13 +1,14 @@
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEyeSlash, FaGithub, FaGoogle, FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+    const [togglePass ,setTogglePass] = useState(false)
     const { handleLogin, handleGoogleSignIn } = useContext(AuthContext);
-    
+
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -71,31 +72,32 @@ const Login = () => {
                                 <input {...register("userEmail", { required: true })} type="email" placeholder="email" className="input input-bordered" />
                                 {errors.userEmail && <span className="text-red-600">Empty email not allowed</span>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input {...register("userPassword", { required: true })} type="password" placeholder="password" className="input input-bordered" />
                                 {errors.userPassword && <span className="text-red-600">Password field is empty</span>}
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                                {
+                                    togglePass ? <p onClick={() => setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-[#9833f9]"><FaRegEye size={18} /></p>
+                                        : <p onClick={() => setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-gray-500"><FaEyeSlash FaRegEye size={18} /></p>
+                                }
                             </div>
                             <div className="form-control mt-6">
                                 <button type="submit" className="custom-btn">Login</button>
                             </div>
                             <p className="text-[15px] flex gap-2 items-center">Not have any account ? <Link to='/signup' className="underline text-blue-600">Signup</Link></p>
                             <div className="divider">OR</div>
-                            
+
                         </form>
-                            <div className="flex justify-center gap-2 mb-5">
-                                <button onClick={handleGoogleLogin} className="btn custom-btn p-0 btn-circle">
-                                    <FaGoogle size={25} />
-                                </button>
-                                <button className="btn custom-btn p-0 btn-circle">
-                                    <FaGithub size={25} />
-                                </button>
-                            </div>
+                        <div className="flex justify-center gap-2 mb-5">
+                            <button onClick={handleGoogleLogin} className="btn custom-btn p-0 btn-circle">
+                                <FaGoogle size={25} />
+                            </button>
+                            <button className="btn custom-btn p-0 btn-circle">
+                                <FaGithub size={25} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
