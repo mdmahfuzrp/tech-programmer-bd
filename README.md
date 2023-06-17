@@ -5,8 +5,8 @@ Tech Programmer BD" is an online platform that offers a comprehensive selection 
 # Live Link
 To explore the **Tech Programmer BD**, please visit our live link:
 
-### [Live Site Link](https://marvel-universe-client.web.app/)
-* Live Site Link: https://marvel-universe-client.web.app/
+### [Live Site Link](https://tech-programmer-bd.web.app)
+* Live Site Link: https://tech-programmer-bd.web.app
 
 
 # Some Features
@@ -21,5 +21,5 @@ To explore the **Tech Programmer BD**, please visit our live link:
 - Class Approval Workflow: Instructors can submit classes for review, and only after admin approval will the classes be visible on the website.
 
 ## Feedback
-**Independently developed and launched "Tech Programmer BD," an intuitive online learning platform for programming enthusiasts. Implemented user-friendly features and a robust admin system for efficient user management and class approval.**
+*Independently developed and launched "Tech Programmer BD," an intuitive online learning platform for programming enthusiasts. Implemented user-friendly features and a robust admin system for efficient user management and class approval.*
 > Md Mahfuz RP
