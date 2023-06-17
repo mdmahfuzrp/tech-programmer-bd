@@ -76,7 +76,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input {...register("userPassword", { required: true })} type="password" placeholder="password" className="input input-bordered" />
+                                <input {...register("userPassword", { required: true })} type={togglePass ? 'text': 'password'} placeholder="password" className="input input-bordered" />
                                 {errors.userPassword && <span className="text-red-600">Password field is empty</span>}
                                 {
                                     togglePass ? <p onClick={() => setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-[#9833f9]"><FaRegEye size={18} /></p>

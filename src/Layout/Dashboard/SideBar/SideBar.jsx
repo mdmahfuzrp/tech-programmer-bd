@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 const SideBar = ({ activeUser }) => {
     const { handleLogout } = useContext(AuthContext)
     const { userName, userPhoto, role } = activeUser;
-    console.log(userName);
 
     const handleUserLogout = () => {
         Swal.fire({

@@ -21,6 +21,7 @@ const SignUp = () => {
 
     const onSubmit = (data, event) => {
         const password = data.userPassword;
+        const confirmPass = data.confirmUserPassword;
         console.log('password: ', password);
         if(password.length < 6){
             setPassError('Please provide at least 6 digit password!');
@@ -32,6 +33,10 @@ const SignUp = () => {
         }
         if(!specialCharRegex.test(password)){
             setPassError('Please provide at least 1 special character!');
+            return;
+        }
+        if(password !== confirmPass){
+            setPassError("Password doesn't match!");
             return;
         }
         // setUserInfo(data);
@@ -132,6 +137,8 @@ const SignUp = () => {
                                     </label>
                                     <input {...register("userPhoto")} type="text" placeholder="Photo (optional)" className="input input-bordered" />
                                 </div>
+                            </div>
+                            <div className="flex flex-col lg:flex-row justify-between lg:gap-5">
                                 <div className="form-control w-full relative">
                                     <label className="label">
                                         <span className="label-text">Password</span>
@@ -145,6 +152,13 @@ const SignUp = () => {
                                         togglePass ? <p onClick={()=> setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-[#9833f9]"><FaRegEye size={18} /></p>
                                         : <p onClick={()=> setTogglePass(!togglePass)} className="absolute top-[62%] right-3 cursor-pointer text-gray-500"><FaEyeSlash FaRegEye size={18} /></p>
                                     }
+                                </div>
+                                
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="label-text">Confirm </span>
+                                    </label>
+                                    <input {...register("confirmUserPassword")} type="password" placeholder="Confirm password" className="input input-bordered" />
                                 </div>
                             </div>
                             <div className="form-control mt-6">

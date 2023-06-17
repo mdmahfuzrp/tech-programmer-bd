@@ -117,7 +117,7 @@ const Classes = () => {
                                         </div>
                                     </div>
                                     {
-                                        user ? <button onClick={() => handleSelectClass(cls)} disabled={student ? true : false || cls.seats === 0 ? true : false} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
+                                        user ? <button onClick={() => handleSelectClass(cls)} disabled={student ? true : false || parseInt(cls.seats) == 0 ? true : false} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
                                             : <>
                                                 <button onClick={handleWarning} className="btn btn-neutral w-fit mx-auto m-3">Select Class</button>
                                             </>

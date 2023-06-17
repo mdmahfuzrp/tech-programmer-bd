@@ -20,8 +20,6 @@ const Dashboard = () => {
                 setActiveUser(user)
             })
     }, [user])
-
-    console.log(activeUser);
     return (
         <div className="bg-gray-200">
             <div className="drawer lg:drawer-open">
