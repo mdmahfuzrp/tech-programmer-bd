@@ -1,30 +1,25 @@
 ### ![alt text](https://i.ibb.co/0fsCWLn/techprogrammerbd.png)
 # Project Overview
-Marvel Universe is a toy-selling website dedicated to Marvel fans of all ages. We offer a wide range of toys, action figures, collectibles, and merchandise featuring your beloved Marvel characters. Our goal is to provide an immersive and user-friendly online shopping experience for Marvel enthusiasts.
+Tech Programmer BD" is an online platform that offers a comprehensive selection of classes for programming enthusiasts. Users can create accounts, login, select classes, and enroll in them. The website includes features for user management, allowing admins to delete users and grant admin or instructor privileges. Instructors can upload and manage classes, which require admin approval before they are visible on the website.
 
 # Live Link
-To explore the Marvel Universe website, please visit our live link:
-### [Server Site Code](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-mdmahfuzrp)
-* Server Site Code: https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-mdmahfuzrp
-
-### [Client Site Code](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-client-side-mdmahfuzrp)
-* Client Site Code: https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-client-side-mdmahfuzrp
+To explore the **Tech Programmer BD**, please visit our live link:
 
 ### [Live Site Link](https://marvel-universe-client.web.app/)
 * Live Site Link: https://marvel-universe-client.web.app/
 
 
 # Some Features
-- **Product Catalog:** Browse through our extensive collection of Marvel toys and merchandise. Filter products by character, movie, or category to easily find what you're looking for.
+- User Registration and Account Management: Users can create accounts, login, and manage their profile information.
 
-- **Detailed Product Pages:** Each product has its dedicated page, featuring high-quality images, detailed descriptions, customer reviews, and pricing information. Make informed purchase decisions with all the necessary product details at your fingertips.
+- Class Selection and Enrollment: Users can browse and select from a variety of programming classes and enroll in their preferred courses.
 
-- **Firebase login system:** We have a firebase login system, if you need you can login with your email and password or if you need google login then you can do this and also same process when you register new account.
+- Admin Privileges: Admins have the power to manage users, including deleting accounts, promoting users to admins or instructors, and approving or denying class submissions.
 
-- **User Accounts:** Create a personal account on Marvel Universe to enjoy a seamless shopping experience. Save your favorite products, track your orders, and receive personalized recommendations based on your interests.
+- Instructor Dashboard: Instructors can access a dedicated dashboard to upload, manage, and view their classes.
 
-- **Responsive Design:** Marvel Universe is designed to be responsive across various devices and screen sizes. Whether you're browsing on a desktop, tablet, or mobile device, the website will adapt to provide an optimal viewing experience.
+- Class Approval Workflow: Instructors can submit classes for review, and only after admin approval will the classes be visible on the website.
 
 ## Feedback
-Last 50 hour i don't sleep at night, but when i see my project is looking very good and the server and client deploy successful then i felt so relaxed, by the way thank you programming hero. **I don't need anyone help in this project, not support session or not any students or mentors, i complete this project with my skill - really it's amazing experience**
+**Independently developed and launched "Tech Programmer BD," an intuitive online learning platform for programming enthusiasts. Implemented user-friendly features and a robust admin system for efficient user management and class approval.**
 > Md Mahfuz RP
