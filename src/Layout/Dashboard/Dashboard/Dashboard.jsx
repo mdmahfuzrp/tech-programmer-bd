@@ -13,7 +13,7 @@ const Dashboard = () => {
     const location = useLocation();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/active/${user?.email}`)
+        fetch(`https://tech-programmer-bd-server.vercel.app/users/active/${user?.email}`)
             .then(res => res.text())
             .then(data => {
                 const user = JSON.parse(data);

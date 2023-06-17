@@ -10,7 +10,7 @@ const ManageClasses = () => {
     const [approvedClasses, setApprovedClasses] = useState([]);
     const [denyClasses, setDenyClasses] = useState([]);
     const { data: classes = [], refetch, isLoading } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:5000/classes');
+        const res = await fetch('https://tech-programmer-bd-server.vercel.app/classes');
         return res.json();
     })
     useEffect(() => {
@@ -42,7 +42,7 @@ const ManageClasses = () => {
 
 
     const handleApproveClass = (c) => {
-        fetch(`http://localhost:5000/classes/approve/${c._id}`, {
+        fetch(`https://tech-programmer-bd-server.vercel.app/classes/approve/${c._id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())
@@ -62,7 +62,7 @@ const ManageClasses = () => {
     // TODO: FEEDBACK NOT UPDATE
     const handleDenyClass = (id, feedback) => {
         console.log(feedback);
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://tech-programmer-bd-server.vercel.app/classes/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 const MyEnrolledClass = () => {
     const { data: enrolledClass = [], isLoading } = useQuery(['payments'], async () => {
-        const res = await fetch('http://localhost:5000/payments');
+        const res = await fetch('https://tech-programmer-bd-server.vercel.app/payments');
         return res.json();
     })
 

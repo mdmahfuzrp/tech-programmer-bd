@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const MySelectedClass = () => {
     const { data: selectedClass = [], refetch, isLoading } = useQuery(['selectedClass'], async () => {
-        const res = await fetch('http://localhost:5000/selectedClass');
+        const res = await fetch('https://tech-programmer-bd-server.vercel.app/selectedClass');
         return res.json();
     })
 
@@ -14,7 +14,7 @@ const MySelectedClass = () => {
     const classPrice = parseFloat(total.toFixed(2))
 
     const handleDeleteClass = (singleClass) => {
-        fetch(`http://localhost:5000/selectedClass/${singleClass._id}`, {
+        fetch(`https://tech-programmer-bd-server.vercel.app/selectedClass/${singleClass._id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

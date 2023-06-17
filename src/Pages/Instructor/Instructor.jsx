@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const Instructor = () => {
     const [allInstructors, setAllInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://tech-programmer-bd-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
                 setAllInstructors(data);

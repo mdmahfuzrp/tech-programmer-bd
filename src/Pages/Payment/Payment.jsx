@@ -7,7 +7,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_PK)
 const Payment = () => {
 
     const { data: selectedClass = [], } = useQuery(['selectedClass'], async () => {
-        const res = await fetch('http://localhost:5000/selectedClass');
+        const res = await fetch('https://tech-programmer-bd-server.vercel.app/selectedClass');
         return res.json();
     })
     

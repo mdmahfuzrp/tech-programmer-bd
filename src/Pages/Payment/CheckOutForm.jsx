@@ -12,7 +12,7 @@ const CheckOutForm = ({ price, selectedClass }) => {
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => { 
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://tech-programmer-bd-server.vercel.app/create-payment-intent', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -74,7 +74,7 @@ const CheckOutForm = ({ price, selectedClass }) => {
                 enrolledCourseId: selectedClass.map(cls => cls._id)
             }
 
-            fetch('http://localhost:5000/payments',{
+            fetch('https://tech-programmer-bd-server.vercel.app/payments',{
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -84,7 +84,7 @@ const CheckOutForm = ({ price, selectedClass }) => {
             .then(res => res.json())
             .then(data => {
                 if(data.insertedId){
-                    fetch('http://localhost:5000/selectedClass',{
+                    fetch('https://tech-programmer-bd-server.vercel.app/selectedClass',{
                         method: 'DELETE'
                     })
                     .then(res => res.json())

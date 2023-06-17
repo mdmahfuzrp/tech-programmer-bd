@@ -3,7 +3,7 @@ import CardClass from "./CardClass";
 
 const PopularClass = () => {
     const { data: classes = [] } = useQuery(['classes'], async () => {
-        const res = await fetch(`http://localhost:5000/classes`);
+        const res = await fetch(`https://tech-programmer-bd-server.vercel.app/classes`);
         return res.json();
     })
     return (

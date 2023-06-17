@@ -28,7 +28,7 @@ const AddClass = () => {
                 if (imgResponse.success) {
                     const img = imgResponse.data.display_url;
                     data.classPhoto = img;
-                    fetch('http://localhost:5000/classes', {
+                    fetch('https://tech-programmer-bd-server.vercel.app/classes', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

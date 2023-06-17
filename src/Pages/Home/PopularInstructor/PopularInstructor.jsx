@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import InstructorCard from "./InstructorCard";
 const PopularInstructor = () => {
     const { data: instructors = [] } = useQuery(['instructors'], async () => {
-        const res = await fetch(`http://localhost:5000/instructors`);
+        const res = await fetch(`https://tech-programmer-bd-server.vercel.app/instructors`);
         return res.json();
     })
     return (

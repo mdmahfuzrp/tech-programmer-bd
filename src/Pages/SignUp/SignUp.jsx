@@ -77,7 +77,7 @@ const SignUp = () => {
                 role: 'student'
             }
             console.log('updated profile', newUserInfo);
-            fetch('http://localhost:5000/users', {
+            fetch('https://tech-programmer-bd-server.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

@@ -15,7 +15,7 @@ const Classes = () => {
     const from = location.state?.from?.pathname || '/login';
 
     useEffect(() => {
-        fetch('http://localhost:5000/student')
+        fetch('https://tech-programmer-bd-server.vercel.app/student')
             .then(res => res.json())
             .then(data => {
                 const isStudentActive = data.filter(std => std?.userEmail === user?.email);
@@ -31,7 +31,7 @@ const Classes = () => {
 
 
     const { data: classes = [] } = useQuery(['classes'], async () => {
-        const res = await fetch(`http://localhost:5000/classes`);
+        const res = await fetch(`https://tech-programmer-bd-server.vercel.app/classes`);
         return res.json();
     })
 
@@ -56,7 +56,7 @@ const Classes = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/selectedClass')
+        fetch('https://tech-programmer-bd-server.vercel.app/selectedClass')
             .then(res => res.json())
             .then(data => {
                 setMySelected(data);
@@ -74,7 +74,7 @@ const Classes = () => {
                 confirmButtonText: 'Done'
             })
         }else {
-            fetch('http://localhost:5000/selectedClass', {
+            fetch('https://tech-programmer-bd-server.vercel.app/selectedClass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
